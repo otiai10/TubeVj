@@ -12,16 +12,24 @@ const __createControllerWindow = () => {
 
 const __main__ = () => {
 
-  ipcMain.on('asynchronous-message', (event, arg) => {
-    console.log(arg); // prints "ping"
-    event.sender.send('asynchronous-reply', 'pong');
-  });
-
   const display = __createDisplayWindow();
   display.loadFile('./html/display.html');
 
   const controller =__createControllerWindow();
   controller.loadFile('./html/controller.html');
+
+  ipcMain.on('asynchronous-message', (event, arg) => {
+    console.log(arg); // prints "ping"
+    event.sender.send('asynchronous-reply', 'pong');
+  });
+
+  ipcMain.on('video', (event, arg) => {
+    console.log(arg); // prints "ping"
+    display.webContents.send('video', arg);
+    // event.sender.send('asynchronous-reply', 'pong');
+  });
+
+
 };
 
 app.on('ready', __main__);
