@@ -5,7 +5,7 @@
   "projects": {
     "master": {
       "root": "",
-      "sourceRoot": "src/master",
+      "sourceRoot": "src",
       "projectType": "application",
       "prefix": "master",
       "schematics": {
@@ -23,8 +23,8 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
-              "src/master/favicon.ico",
-              "src/master/assets"
+              "src/favicon.ico",
+              "src/assets"
             ],
             "styles": [
               "src/master/styles.sass"
@@ -36,12 +36,42 @@
           "configurations": {
 
           }
+
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "src/master/test.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "src/tsconfig.spec.json",
+            "karmaConfig": "src/master/karma.conf.js",
+            "styles": [
+              "src/master/styles.sass"
+            ],
+            "scripts": [],
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "src/tsconfig.app.json",
+              "src/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
         }
       }
     },
     "controller": {
       "root": "",
-      "sourceRoot": "src/controller",
+      "sourceRoot": "src",
       "projectType": "application",
       "prefix": "cntrl",
       "schematics": {
@@ -59,8 +89,8 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
-              "src/controller/favicon.ico",
-              "src/controller/assets"
+              "src/favicon.ico",
+              "src/assets"
             ],
             "styles": [
               "src/controller/styles.sass"
@@ -107,14 +137,14 @@
             "main": "src/controller/test.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.spec.json",
-            "karmaConfig": "src/karma.conf.js",
+            "karmaConfig": "src/controller/karma.conf.js",
             "styles": [
               "src/controller/styles.sass"
             ],
             "scripts": [],
             "assets": [
-              "src/controller/favicon.ico",
-              "src/controller/assets"
+              "src/favicon.ico",
+              "src/assets"
             ]
           }
         },

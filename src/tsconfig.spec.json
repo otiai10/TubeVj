@@ -8,7 +8,8 @@
     ]
   },
   "files": [
-    "test.ts",
+    "master/test.ts",
+    "controller/test.ts",
     "polyfills.ts"
   ],
   "include": [

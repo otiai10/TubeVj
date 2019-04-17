@@ -1,14 +1,19 @@
 {
   "name": "tube-vj",
   "version": "0.0.0",
+  "engine": {
+    "node": "10.15.0",
+    "npm": "6.5.0"
+  },
   "main": "main.js",
   "scripts": {
     "e": "electron .",
     "n": "ng build",
-    "start": "ng build && electron .",
+    "start": "electron .",
+    "build": "ng build master && ng build controller",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "t": "ng build master && ng build controller && ng lint && ng test --watch=false"
   },
   "private": true,
   "dependencies": {
