@@ -4,7 +4,7 @@
   "main": "main.js",
   "scripts": {
     "e": "electron .",
-    "a": "ng build",
+    "n": "ng build",
     "start": "ng build && electron .",
     "test": "ng test",
     "lint": "ng lint",
