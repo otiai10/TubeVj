@@ -9,9 +9,8 @@
   "scripts": {
     "start": "too -c 'ng build master --watch' -c 'ng build controller --watch' -c 'electron .'",
     "build": "ng build master && ng build controller",
-    "test": "ng test",
     "lint": "ng lint",
-    "t": "ng build master && ng build controller && ng lint && ng test --watch=false"
+    "test": "ng build master && ng build controller && ng lint && ng test --watch=false"
   },
   "private": true,
   "dependencies": {
