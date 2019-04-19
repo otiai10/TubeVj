@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent {
-  title = 'Controller - Tube.Vj';
+  previews = [0, 1, 2, 3];
 }

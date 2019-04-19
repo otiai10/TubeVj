@@ -27,7 +27,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/master/styles.sass"
+              "src/styles.sass"
             ],
             "scripts": [],
             "es5BrowserSupport": true
@@ -46,7 +46,7 @@
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/master/karma.conf.js",
             "styles": [
-              "src/master/styles.sass"
+              "src/styles.sass"
             ],
             "scripts": [],
             "assets": [
@@ -93,7 +93,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/controller/styles.sass"
+              "src/styles.sass"
             ],
             "scripts": [],
             "es5BrowserSupport": true
@@ -139,7 +139,7 @@
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/controller/karma.conf.js",
             "styles": [
-              "src/controller/styles.sass"
+              "src/styles.sass"
             ],
             "scripts": [],
             "assets": [

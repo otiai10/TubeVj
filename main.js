@@ -14,7 +14,6 @@ const __createMasterViewWindow = () => {
 const __createControllerViewWindow = () => {
   const __project = 'controller-window';
   const win = new BrowserWindow({
-    backgroundColor: '#ff6347',
     icon: `file://${__dirname}/dist/${__project}/assets/logo.png`,
   });
   win.loadURL(`file://${__dirname}/dist/${__project}/index.html`);
