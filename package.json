@@ -7,9 +7,7 @@
   },
   "main": "main.js",
   "scripts": {
-    "e": "electron .",
-    "n": "ng build",
-    "start": "electron .",
+    "start": "too -c 'ng build master --watch' -c 'ng build controller --watch' -c 'electron .'",
     "build": "ng build master && ng build controller",
     "test": "ng test",
     "lint": "ng lint",
@@ -35,6 +33,7 @@
     "@angular/cli": "~7.3.8",
     "@angular/compiler-cli": "~7.2.0",
     "@angular/language-service": "~7.2.0",
+    "@otiai10/too": "git+https://git@github.com/otiai10/too.js.git",
     "@types/jasmine": "~2.8.8",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
