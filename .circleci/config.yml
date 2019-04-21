@@ -1,0 +1,21 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:10.15.3-browsers
+      # - image: circleci/mongo:3.4.4
+    working_directory: ~/repo
+    steps:
+      - checkout
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+            - depscache-{{ checksum "package.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - depscache-
+      - run: npm install
+      - save_cache:
+          paths:
+            - node_modules
+          key: depscache-{{ checksum "package.json" }}
+      - run: npm test
