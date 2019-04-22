@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { PreviewTrackComponent } from './components/preview/track.component';
 import { SearchContainerComponent } from './components/search/search-container.component';
+import { YouTubePlayerAPIService } from '../service/youtube/player';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,9 @@ import { SearchContainerComponent } from './components/search/search-container.c
     FormsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    YouTubePlayerAPIService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

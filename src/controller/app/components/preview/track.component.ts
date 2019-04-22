@@ -1,4 +1,7 @@
 import { Component, Input } from '@angular/core';
+import { YouTubePlayerAPIService } from 'src/controller/service/youtube/player';
+
+declare var YT: any;
 
 @Component({
   selector: 'app-preview-track',
@@ -6,11 +9,26 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./track.component.sass']
 })
 export class PreviewTrackComponent {
+
   @Input() index: number;
 
+  private player: any; // TODO: Typings
+
+  constructor(private yt: YouTubePlayerAPIService) {
+    yt.ready.subscribe(() => this.initPlayer());
+  }
+
+  private initPlayer() {
+    this.player = new YT.Player(`player-${this.index}`, {
+      width: '100%',
+      height: '80%',
+    });
+  }
+
   drop(ev: DragEvent) {
-    console.log(ev.dataTransfer.getData('vid'));
-    console.log(ev.dataTransfer.getData('title'));
+    // console.log(ev.dataTransfer.getData('title'));
+    const videoId = ev.dataTransfer.getData('vid');
+    this.player.loadVideoById(videoId);
   }
 
   /**
