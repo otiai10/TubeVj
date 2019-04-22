@@ -2,6 +2,8 @@ import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { PreviewContainerComponent } from './components/preview-container.component';
 import { SearchContainerComponent } from './components/search/search-container.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -10,6 +12,10 @@ describe('AppComponent', () => {
         AppComponent,
         PreviewContainerComponent,
         SearchContainerComponent,
+      ],
+      imports: [
+        FormsModule,
+        HttpClientModule,
       ],
     }).compileComponents();
   }));
