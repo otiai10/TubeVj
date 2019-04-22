@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment as env } from '../../../../environments/environment';
+import { EventHandlerVars } from '@angular/compiler/src/compiler_util/expression_converter';
 
 declare interface YouTubeThumbnail {
   width: number;
@@ -51,7 +52,7 @@ declare interface YouTubeSearchResponse {
 })
 export class SearchContainerComponent {
 
-  query = '';
+  query = '初音ミク';
   items: YouTubeSearchItem[] = [];
 
   constructor(private http: HttpClient) { }
@@ -71,5 +72,10 @@ export class SearchContainerComponent {
     this.http.get<YouTubeSearchResponse>(url.toString()).subscribe(response => {
       this.items = response.items;
     });
+  }
+
+  drag(ev: DragEvent, item: YouTubeSearchItem) {
+    ev.dataTransfer.setData('vid', item.id.videoId);
+    ev.dataTransfer.setData('title', item.snippet.title);
   }
 }

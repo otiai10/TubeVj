@@ -10,7 +10,11 @@
     />
   </div>
   <div class="search-result">
-    <div class="search-result-item" *ngFor="let item of items">
+    <div class="search-result-item"
+      *ngFor="let item of items"
+      draggable="true"
+      (dragstart)="drag($event, item)"
+    >
       <span>{{item.snippet.title}}</span>
       <img src="{{item.snippet.thumbnails.default.url}}" />
     </div>

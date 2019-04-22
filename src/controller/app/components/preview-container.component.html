@@ -1,5 +1,8 @@
 <div class="container">
-  <div class="columns">
+  <div class="columns"
+    (drop)="drop($event)"
+    (dragover)="dragover($event)"
+    >
     <div class="column col-4">
       <iframe
         width="100%"
