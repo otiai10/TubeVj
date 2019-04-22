@@ -12,6 +12,7 @@ export class PreviewTrackComponent {
 
   @Input() index: number;
 
+  private isDragOver = false;
   private player: any; // TODO: Typings
 
   constructor(private yt: YouTubePlayerAPIService) {
@@ -29,6 +30,7 @@ export class PreviewTrackComponent {
     // console.log(ev.dataTransfer.getData('title'));
     const videoId = ev.dataTransfer.getData('vid');
     this.player.loadVideoById(videoId);
+    this.isDragOver = false;
   }
 
   /**
@@ -37,5 +39,22 @@ export class PreviewTrackComponent {
   dragover(ev: Event) {
     ev.stopPropagation();
     ev.preventDefault();
+    this.isDragOver = true;
+  }
+
+  /**
+   * is required to control (e.g. recover) styles.
+   */
+  dragleave() {
+    this.isDragOver = false;
+  }
+
+  containerStyle() {
+    if (!this.isDragOver) {
+      return {};
+    }
+    return {
+      backgroundColor: '#464646',
+    };
   }
 }

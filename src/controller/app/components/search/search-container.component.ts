@@ -52,7 +52,7 @@ declare interface YouTubeSearchResponse {
 })
 export class SearchContainerComponent {
 
-  query = '初音ミク';
+  query = '';
   items: YouTubeSearchItem[] = [];
 
   constructor(private http: HttpClient) { }

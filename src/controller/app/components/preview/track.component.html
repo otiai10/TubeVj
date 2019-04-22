@@ -1,7 +1,8 @@
-<div class="container">
+<div class="container" [ngStyle]="containerStyle()">
   <div class="columns"
     (drop)="drop($event)"
     (dragover)="dragover($event)"
+    (dragleave)="dragleave()"
     >
     <div class="column col-4">
       <div id="player-{{index}}"></div>
