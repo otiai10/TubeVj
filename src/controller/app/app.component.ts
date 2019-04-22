@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { YouTubePlayerAPIService } from '../service/youtube/player';
 
+import '../../models/video';
+import { VideoOperation } from '../../models/video';
+
 // TODO: Fix
 declare var window: any;
 
@@ -15,4 +18,9 @@ export class AppComponent {
   constructor(private yt: YouTubePlayerAPIService) {
     yt.defer(window);
   }
+
+  push(op: VideoOperation) {
+    console.log(op);
+  }
+
 }

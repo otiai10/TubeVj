@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { YouTubePlayerAPIService } from 'src/controller/service/youtube/player';
+import { VideoOperation, VideoOperationType } from 'src/models/video';
 
 declare var YT: any;
 
@@ -11,6 +12,7 @@ declare var YT: any;
 export class PreviewTrackComponent {
 
   @Input() index: number;
+  @Input() push: (op: VideoOperation) => void;
 
   private isDragOver = false;
   private player: any; // TODO: Typings
@@ -28,9 +30,11 @@ export class PreviewTrackComponent {
 
   drop(ev: DragEvent) {
     // console.log(ev.dataTransfer.getData('title'));
-    const videoId = ev.dataTransfer.getData('vid');
-    this.player.loadVideoById(videoId);
+    const id = ev.dataTransfer.getData('vid');
+    this.player.loadVideoById(id);
     this.isDragOver = false;
+
+    this.push({type: VideoOperationType.LOAD, video: {id}});
   }
 
   /**
