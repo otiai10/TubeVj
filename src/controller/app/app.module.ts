@@ -4,13 +4,13 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { PreviewContainerComponent } from './components/preview-container.component';
+import { PreviewTrackComponent } from './components/preview/track.component';
 import { SearchContainerComponent } from './components/search/search-container.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PreviewContainerComponent,
+    PreviewTrackComponent,
     SearchContainerComponent,
   ],
   imports: [

@@ -1,11 +1,11 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-preview-container',
-  templateUrl: './preview-container.component.html',
-  styleUrls: ['./preview-container.component.sass']
+  selector: 'app-preview-track',
+  templateUrl: './track.component.html',
+  styleUrls: ['./track.component.sass']
 })
-export class PreviewContainerComponent {
+export class PreviewTrackComponent {
   @Input() index: number;
 
   drop(ev: DragEvent) {
