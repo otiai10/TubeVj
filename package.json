@@ -36,7 +36,7 @@
     "@otiai10/too": "git+https://git@github.com/otiai10/too.js.git",
     "@types/jasmine": "~2.8.8",
     "@types/jasminewd2": "~2.0.3",
-    "@types/node": "~8.9.4",
+    "@types/node": "^8.10.46",
     "codelyzer": "~4.5.0",
     "electron": "^4.1.4",
     "jasmine-core": "~2.99.1",

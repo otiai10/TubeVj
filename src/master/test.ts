@@ -9,6 +9,11 @@ import {
 
 declare const require: any;
 
+// {{{ TODO: Use mock
+declare var window: any;
+window.ipcRenderer = {on: () => {}};
+// }}}
+
 // First, initialize the Angular testing environment.
 getTestBed().initTestEnvironment(
   BrowserDynamicTestingModule,

@@ -14,4 +14,5 @@ export enum VideoOperationType {
 export declare interface VideoOperation {
   type: VideoOperationType;
   video: Video;
+  target: number;
 }

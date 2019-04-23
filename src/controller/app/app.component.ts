@@ -1,8 +1,14 @@
 import { Component } from '@angular/core';
-import { YouTubePlayerAPIService } from '../service/youtube/player';
+import { YouTubePlayerAPIService } from '../../service/youtube/player';
 
 import '../../models/video';
 import { VideoOperation } from '../../models/video';
+import { environment } from 'src/environments/environment';
+
+// FIXME:
+//    - https://github.com/angular/angular-cli/issues/8272
+//    - https://github.com/electron/electron/issues/10167
+// import { ipcRenderer } from 'electron';
 
 // TODO: Fix
 declare var window: any;
@@ -13,14 +19,16 @@ declare var window: any;
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent {
-  previews = [0, 1, 2, 3];
+
+  tracks = Array(environment.screens).fill(0).map((_, i) => i);
 
   constructor(private yt: YouTubePlayerAPIService) {
     yt.defer(window);
   }
 
   push(op: VideoOperation) {
-    console.log(op);
+    const ipcRenderer = window.ipcRenderer;
+    ipcRenderer.send('video', op);
   }
 
 }

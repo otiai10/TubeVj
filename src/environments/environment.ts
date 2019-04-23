@@ -5,6 +5,7 @@ import { secrets } from './secrets';
 
 export const environment = {
   production: false,
+  screens: 4,
   YOUTUBE_API_KEY: 'Should be defined inside secrets.ts',
   ...(secrets || {}),
 };

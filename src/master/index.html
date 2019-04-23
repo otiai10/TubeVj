@@ -4,9 +4,15 @@
   <meta charset="utf-8">
   <title>Master Window - TubeVj</title>
   <base href="./">
-
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script>
+    // {{{ Just to skip Angular compiler which cannot resolve 'fs', 'path', and 'os'.
+    const { ipcRenderer } = require('electron');
+    window.ipcRenderer = ipcRenderer;
+    // }}}
+  </script>
+  <script src="https://www.youtube.com/iframe_api" defer></script>
 </head>
 <body>
   <app-root></app-root>

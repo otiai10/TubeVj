@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { YouTubePlayerAPIService } from 'src/controller/service/youtube/player';
+import { YouTubePlayerAPIService } from 'src/service/youtube/player';
 import { VideoOperation, VideoOperationType } from 'src/models/video';
 
 declare var YT: any;
@@ -33,8 +33,7 @@ export class PreviewTrackComponent {
     const id = ev.dataTransfer.getData('vid');
     this.player.loadVideoById(id);
     this.isDragOver = false;
-
-    this.push({type: VideoOperationType.LOAD, video: {id}});
+    this.push({type: VideoOperationType.LOAD, video: {id}, target: this.index});
   }
 
   /**
