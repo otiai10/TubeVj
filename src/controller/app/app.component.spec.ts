@@ -4,6 +4,7 @@ import { PreviewTrackComponent } from './components/preview/track.component';
 import { SearchContainerComponent } from './components/search/search-container.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { FaderComponent } from './components/parts/fader/fader.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -12,6 +13,7 @@ describe('AppComponent', () => {
         AppComponent,
         PreviewTrackComponent,
         SearchContainerComponent,
+        FaderComponent,
       ],
       imports: [
         FormsModule,

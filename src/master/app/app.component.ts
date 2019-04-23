@@ -28,7 +28,7 @@ export class AppComponent {
   }
 
   onVideoOperationReceive(op: VideoOperation) {
-    console.log('Operation Receive:', op);
+    // console.log('Operation Receive:', op);
     this.operation.emit(op);
   }
 }

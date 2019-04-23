@@ -1,19 +1,17 @@
 import { TestBed, async } from '@angular/core/testing';
-import { PreviewTrackComponent } from './track.component';
-import { FaderComponent } from '../parts/fader/fader.component';
+import { FaderComponent } from './fader.component';
 
-describe('PreviewContainerComponent', () => {
+describe('FaderComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        PreviewTrackComponent,
         FaderComponent,
       ],
     }).compileComponents();
   }));
 
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(PreviewTrackComponent);
+    const fixture = TestBed.createComponent(FaderComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   });

@@ -46,9 +46,11 @@ export class ScreenComponent implements OnInit {
       return;
     }
     switch (op.type) {
+    case VideoOperationType.FADE:
+      return this.fade(op.video.opacity);
     case VideoOperationType.LOAD:
     default:
-      this.player.loadVideoById(op.video.id);
+      return this.player.loadVideoById(op.video.id);
     }
   }
 
@@ -57,6 +59,10 @@ export class ScreenComponent implements OnInit {
     case YT.PlayerState.ENDED:
       return this.player.playVideo();
     }
+  }
+
+  private fade(opacity: number) {
+    this.player.a.style.opacity = opacity;
   }
 
 }

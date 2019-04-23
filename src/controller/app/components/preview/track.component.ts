@@ -75,5 +75,8 @@ export class PreviewTrackComponent {
     }
   }
 
-
+  onFadeChange(ev) {
+    const opacity = parseInt(ev.target.value, 10) / 100;
+    this.push({type: VideoOperationType.FADE, video: {opacity}, target: this.index});
+  }
 }

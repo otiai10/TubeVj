@@ -1,0 +1,11 @@
+<div>
+  <input
+    type="range"
+    [value]="value"
+    [max]="max"
+    [min]="min"
+    [step]="step"
+    (change)="onFixed($event)"
+    (input)="onSlide($event)"
+  /> 
+</div>

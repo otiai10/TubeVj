@@ -8,7 +8,7 @@
       <div id="player-{{index}}"></div>
     </div>
     <div class="column col-8">
-      <input class="slider" type="range" min="0" max="100" value="0" />
+      <app-fader [onSlide]="onFadeChange.bind(this)"></app-fader>
     </div>
   </div>
 </div>

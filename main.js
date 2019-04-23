@@ -24,7 +24,10 @@ const __createControllerViewWindow = () => {
 };
 
 const __createMessagingProxy = (master, controller) => {
-  ipcMain.on('video', (ev, arg) => master.webContents.send('video', arg));
+  ipcMain.on('video', (ev, arg) => {
+    // console.log(arg);
+    master.webContents.send('video', arg)
+  });
 };
 
 const __main__ = () => {
