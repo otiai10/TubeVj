@@ -13,6 +13,7 @@ jobs:
             - depscache-{{ checksum "package.json" }}
             # fallback to using the latest cache if no exact match is found
             - depscache-
+      - run: cp ./src/environments/secrets.example.ts ./src/environments/secrets.ts
       - run: npm install
       - save_cache:
           paths:
