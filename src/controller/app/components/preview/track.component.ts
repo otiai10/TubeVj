@@ -25,6 +25,13 @@ export class PreviewTrackComponent {
     this.player = new YT.Player(`player-${this.index}`, {
       width: '100%',
       height: '80%',
+      playerVars: {
+        loop: 1,
+        autoplay: 1,
+      },
+      events: {
+        onStateChange: ev => this.onPlayerStateChange(ev),
+      },
     });
   }
 
@@ -60,4 +67,13 @@ export class PreviewTrackComponent {
       backgroundColor: '#464646',
     };
   }
+
+  private onPlayerStateChange(ev: {data: number}) {
+    switch (ev.data) {
+    case YT.PlayerState.ENDED:
+      return this.player.playVideo();
+    }
+  }
+
+
 }
