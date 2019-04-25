@@ -5,10 +5,11 @@
     "node": "10.15.0",
     "npm": "6.5.0"
   },
-  "main": "main.js",
+  "main": "dist/main.js",
   "scripts": {
-    "start": "too -c 'ng build master --watch' -c 'ng build controller --watch' -c 'electron .'",
+    "start": "tsc -p src/main && too -c 'ng build master --watch' -c 'ng build controller --watch' -c 'electron .'",
     "build": "ng build master && ng build controller",
+    "app": "npm run build && tsc -p src/main && electron .",
     "lint": "ng lint",
     "test": "ng build master && ng build controller && ng lint && ng test --codeCoverage=true --watch=false"
   },

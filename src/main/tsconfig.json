@@ -1,11 +1,12 @@
 {
-  "extends": "../../tsconfig.json",
+  "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "../../",
-    "outDir": "./dist/",
+    "outDir": "../../dist/",
     "sourceMap": true,
     "declaration": false,
-    "module": "es2015",
+    // "module": "es2015",
+    "module": "commonjs",
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
@@ -15,12 +16,12 @@
       "node_modules/@types"
     ],
     "lib": [
+      "es6",
       "es2018",
       "dom"
     ]
   },
-  "exclude": [
-    "test.ts",
-    "**/*.spec.ts"
+  "files": [
+    "./main.ts"
   ]
 }
