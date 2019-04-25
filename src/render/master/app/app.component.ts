@@ -1,6 +1,6 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-import { environment } from 'src/environments/environment';
-import { YouTubePlayerAPIService } from 'src/service/youtube/player';
+import { environment } from '../../../environments/environment';
+import { YouTubePlayerAPIService } from 'src/render/service/youtube/player';
 import { VideoOperation } from 'src/models/video';
 
 // FIXME:

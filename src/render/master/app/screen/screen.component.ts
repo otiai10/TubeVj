@@ -1,7 +1,6 @@
 import { Component, Input, EventEmitter, OnInit } from '@angular/core';
-import { YouTubePlayerAPIService } from 'src/service/youtube/player';
+import { YouTubePlayerAPIService } from 'src/render/service/youtube/player';
 import { VideoOperation, VideoOperationType } from 'src/models/video';
-// import { VideoOperation, VideoOperationType } from 'src/models/video';
 
 declare var YT: any;
 

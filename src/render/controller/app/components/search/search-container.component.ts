@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment as env } from '../../../../environments/environment';
-import { EventHandlerVars } from '@angular/compiler/src/compiler_util/expression_converter';
+import { environment as env } from '../../../../../environments/environment';
 
 declare interface YouTubeThumbnail {
   width: number;

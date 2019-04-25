@@ -5,7 +5,7 @@
   "projects": {
     "master": {
       "root": "",
-      "sourceRoot": "src",
+      "sourceRoot": "src/render",
       "projectType": "application",
       "prefix": "master",
       "schematics": {
@@ -18,17 +18,17 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/master-window",
-            "index": "src/master/index.html",
-            "main": "src/master/main.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "src/tsconfig.app.json",
+            "index": "src/render/master/index.html",
+            "main": "src/render/master/main.ts",
+            "polyfills": "src/render/polyfills.ts",
+            "tsConfig": "src/render/tsconfig.app.json",
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "src/render/favicon.ico",
+              "src/render/assets"
             ],
             "styles": [
-              "src/styles.sass",
-              "src/master/screen.sass"
+              "src/render/styles.sass",
+              "src/render/master/screen.sass"
             ],
             "scripts": [],
             "es5BrowserSupport": true
@@ -42,17 +42,17 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "src/master/test.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "src/tsconfig.spec.json",
-            "karmaConfig": "src/karma.conf.js",
+            "main": "src/render/master/test.ts",
+            "polyfills": "src/render/polyfills.ts",
+            "tsConfig": "src/render/tsconfig.spec.json",
+            "karmaConfig": "src/render/karma.conf.js",
             "styles": [
-              "src/styles.sass"
+              "src/render/styles.sass"
             ],
             "scripts": [],
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "src/render/favicon.ico",
+              "src/render/assets"
             ]
           }
         },
@@ -60,8 +60,8 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "src/tsconfig.app.json",
-              "src/tsconfig.spec.json"
+              "src/render/tsconfig.app.json",
+              "src/render/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -72,7 +72,7 @@
     },
     "controller": {
       "root": "",
-      "sourceRoot": "src",
+      "sourceRoot": "src/render",
       "projectType": "application",
       "prefix": "cntrl",
       "schematics": {
@@ -85,16 +85,16 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/controller-window",
-            "index": "src/controller/index.html",
-            "main": "src/controller/main.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "src/tsconfig.app.json",
+            "index": "src/render/controller/index.html",
+            "main": "src/render/controller/main.ts",
+            "polyfills": "src/render/polyfills.ts",
+            "tsConfig": "src/render/tsconfig.app.json",
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "src/render/favicon.ico",
+              "src/render/assets"
             ],
             "styles": [
-              "src/styles.sass"
+              "src/render/styles.sass"
             ],
             "scripts": [],
             "es5BrowserSupport": true
@@ -135,17 +135,17 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "src/controller/test.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "src/tsconfig.spec.json",
-            "karmaConfig": "src/karma.conf.js",
+            "main": "src/render/controller/test.ts",
+            "polyfills": "src/render/polyfills.ts",
+            "tsConfig": "src/render/tsconfig.spec.json",
+            "karmaConfig": "src/render/karma.conf.js",
             "styles": [
-              "src/styles.sass"
+              "src/render/styles.sass"
             ],
             "scripts": [],
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "src/render/favicon.ico",
+              "src/render/assets"
             ]
           }
         },
@@ -153,8 +153,8 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "src/tsconfig.app.json",
-              "src/tsconfig.spec.json"
+              "src/render/tsconfig.app.json",
+              "src/render/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"

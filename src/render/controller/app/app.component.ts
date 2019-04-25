@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { YouTubePlayerAPIService } from '../../service/youtube/player';
 
-import '../../models/video';
-import { VideoOperation } from '../../models/video';
-import { environment } from 'src/environments/environment';
+import { VideoOperation } from '../../../models/video';
+import { environment } from '../../../environments/environment';
 
 // FIXME:
 //    - https://github.com/angular/angular-cli/issues/8272

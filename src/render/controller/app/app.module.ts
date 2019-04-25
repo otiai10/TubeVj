@@ -6,7 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { PreviewTrackComponent } from './components/preview/track.component';
 import { SearchContainerComponent } from './components/search/search-container.component';
-import { YouTubePlayerAPIService } from 'src/service/youtube/player';
+import { YouTubePlayerAPIService } from 'src/render/service/youtube/player';
 import { FaderComponent } from './components/parts/fader/fader.component';
 
 @NgModule({

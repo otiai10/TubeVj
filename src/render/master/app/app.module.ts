@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { YouTubePlayerAPIService } from 'src/service/youtube/player';
+import { YouTubePlayerAPIService } from 'src/render/service/youtube/player';
 import { ScreenComponent } from './screen/screen.component';
 
 @NgModule({
