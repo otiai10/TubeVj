@@ -44,6 +44,9 @@ declare interface YouTubeSearchResponse {
   items: YouTubeSearchItem[];
 }
 
+// TODO: Fix
+declare var window: any;
+
 @Component({
   selector: 'app-search-container',
   templateUrl: './search-container.component.html',
@@ -65,10 +68,13 @@ export class SearchContainerComponent {
   search() {
     // TODO: Create Service Layer!!!!
     const url = new URL('https://www.googleapis.com/youtube/v3/search');
-    url.searchParams.set('key', env.YOUTUBE_API_KEY);
     url.searchParams.set('q', this.query.trim());
     url.searchParams.set('part', 'snippet');
-    this.http.get<YouTubeSearchResponse>(url.toString()).subscribe(response => {
+    this.http.get<YouTubeSearchResponse>(url.toString(), {
+      headers: {
+        Authorization: `Bearer ${env.YOUTUBE_API_KEY}`,
+      },
+    }).subscribe(response => {
       this.items = response.items;
     });
   }
@@ -76,5 +82,10 @@ export class SearchContainerComponent {
   drag(ev: DragEvent, item: YouTubeSearchItem) {
     ev.dataTransfer.setData('vid', item.id.videoId);
     ev.dataTransfer.setData('title', item.snippet.title);
+  }
+
+  startAuthentication() {
+    const ipcRenderer = window.ipcRenderer;
+    ipcRenderer.send('auth', {});
   }
 }
