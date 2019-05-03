@@ -70,7 +70,11 @@ export class PreviewTrackComponent {
 
   private onPlayerStateChange(ev: {data: number}) {
     switch (ev.data) {
+    case YT.PlayerState.PLAYING:
+      const seek = this.player.getCurrentTime();
+      return this.push({ type: VideoOperationType.SEEK, video: { seek }, target: this.index });
     case YT.PlayerState.ENDED:
+      // Loop
       return this.player.playVideo();
     }
   }
