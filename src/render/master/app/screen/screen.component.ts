@@ -15,10 +15,9 @@ export class ScreenComponent implements OnInit {
   @Input() operation: EventEmitter<VideoOperation>;
 
   private player: any; // TODO: Typings
-  private states: number[] = [undefined, undefined];
 
-  constructor(private yt: YouTubePlayerAPIService) {
-    yt.ready.subscribe(() => this.initPlayer());
+  constructor(private youtube: YouTubePlayerAPIService) {
+    this.youtube.ready.subscribe(() => this.initPlayer());
   }
 
   ngOnInit() {
