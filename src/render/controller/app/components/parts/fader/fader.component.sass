@@ -12,6 +12,8 @@ input[type=range]
 
   &:focus
     outline: none
+    &::-webkit-slider-thumb
+      box-shadow: -100vw 0 0 100vw $warning-color
 
   &::-webkit-slider-runnable-track
     background: $gray-color-dark
