@@ -8,12 +8,14 @@ import { PreviewTrackComponent } from './components/preview/track.component';
 import { SearchContainerComponent } from './components/search/search-container.component';
 import { YouTubePlayerAPIService } from 'src/render/service/youtube/player';
 import { FaderComponent } from './components/parts/fader/fader.component';
+import { YouTubeSearchComponent } from './components/search/youtube/youtube-search.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PreviewTrackComponent,
     SearchContainerComponent,
+    YouTubeSearchComponent,
     FaderComponent,
   ],
   imports: [

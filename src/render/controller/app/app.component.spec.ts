@@ -5,6 +5,7 @@ import { SearchContainerComponent } from './components/search/search-container.c
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { FaderComponent } from './components/parts/fader/fader.component';
+import { YouTubeSearchComponent } from './components/search/youtube/youtube-search.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -14,6 +15,7 @@ describe('AppComponent', () => {
         PreviewTrackComponent,
         SearchContainerComponent,
         FaderComponent,
+        YouTubeSearchComponent,
       ],
       imports: [
         FormsModule,

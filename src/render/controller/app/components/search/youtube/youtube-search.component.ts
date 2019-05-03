@@ -1,11 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment as env } from '../../../../../environments/environment';
-
-enum Tab {
-  Favs = 'Favs',
-  YouTube = 'YouTube',
-}
+import { environment as env } from '../../../../../../environments/environment';
 
 declare interface YouTubeThumbnail {
   width: number;
@@ -53,14 +48,11 @@ declare interface YouTubeSearchResponse {
 declare var window: any;
 
 @Component({
-  selector: 'app-search-container',
-  templateUrl: './search-container.component.html',
-  styleUrls: ['./search-container.component.sass']
+  selector: 'app-youtube-search',
+  templateUrl: './youtube-search.component.html',
+  styleUrls: ['./youtube-search.component.sass']
 })
-export class SearchContainerComponent {
-
-  tabs = [Tab.Favs, Tab.YouTube];
-  active = Tab.Favs;
+export class YouTubeSearchComponent {
 
   query = '';
   items: YouTubeSearchItem[] = [];
@@ -78,11 +70,13 @@ export class SearchContainerComponent {
     const url = new URL('https://www.googleapis.com/youtube/v3/search');
     url.searchParams.set('q', this.query.trim());
     url.searchParams.set('part', 'snippet');
-    this.http.get<YouTubeSearchResponse>(url.toString(), {
-      headers: {
-        Authorization: `Bearer ${env.YOUTUBE_API_KEY}`,
-      },
-    }).subscribe(response => {
+    let headers = {};
+    if (env.YOUTUBE_API_KEY) {
+      url.searchParams.set('key', env.YOUTUBE_API_KEY);
+    } else {
+      headers = { Authorization: `Bearer ${env.YOUTUBE_API_KEY}` };
+    }
+    this.http.get<YouTubeSearchResponse>(url.toString(), { headers }).subscribe(response => {
       this.items = response.items;
     });
   }
@@ -97,7 +91,4 @@ export class SearchContainerComponent {
     ipcRenderer.send('auth', {});
   }
 
-  changeTab(tab: Tab) {
-    this.active = tab;
-  }
 }

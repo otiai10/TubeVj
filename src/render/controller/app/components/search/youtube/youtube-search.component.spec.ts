@@ -1,14 +1,12 @@
 import { TestBed, async } from '@angular/core/testing';
-import { SearchContainerComponent } from './search-container.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { YouTubeSearchComponent } from './youtube/youtube-search.component';
+import { YouTubeSearchComponent } from './youtube-search.component';
 
-describe('SaerchContainerComponent', () => {
+describe('YouTubeSearchComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        SearchContainerComponent,
         YouTubeSearchComponent,
       ],
       imports: [
@@ -19,7 +17,7 @@ describe('SaerchContainerComponent', () => {
   }));
 
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(SearchContainerComponent);
+    const fixture = TestBed.createComponent(YouTubeSearchComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   });

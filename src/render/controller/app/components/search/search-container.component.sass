@@ -1,3 +1,7 @@
+// FIXME: Doesn't work?
+@imort '../../../../styles/sizing'
+$selector-tab-height: 48px
+
 .container
   height: 100%
   display: flex
@@ -7,3 +11,9 @@
   >div.search-result
     flex: 1
     overflow: scroll
+
+  ul
+    border-bottom: none
+    height: $selector-tab-height
+    li
+      cursor: pointer
