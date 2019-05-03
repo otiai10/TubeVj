@@ -38,6 +38,7 @@ export class PreviewTrackComponent {
   drop(ev: DragEvent) {
     // console.log(ev.dataTransfer.getData('title'));
     const id = ev.dataTransfer.getData('vid');
+    console.log(id, id.trim(), id === id.trim());
     this.player.loadVideoById(id);
     this.isDragOver = false;
     this.push({type: VideoOperationType.LOAD, video: {id}, target: this.index});

@@ -42,6 +42,8 @@ export class YouTubeDataAPIService {
     url.searchParams.set('q', query.trim());
     url.searchParams.set('part', 'snippet');
     url.searchParams.set('maxResults', '40');
+    url.searchParams.set('type', 'video');
+    url.searchParams.set('videoEmbeddable', 'true');
     let headers = {};
     if (this.tokenType) {
       headers = { Authorization: `${this.tokenType} ${this.accessToken}` };
