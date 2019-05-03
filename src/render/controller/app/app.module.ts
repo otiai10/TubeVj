@@ -9,6 +9,7 @@ import { SearchContainerComponent } from './components/search/search-container.c
 import { YouTubePlayerAPIService } from 'src/render/service/youtube/player';
 import { FaderComponent } from './components/parts/fader/fader.component';
 import { YouTubeSearchComponent } from './components/search/youtube/youtube-search.component';
+import { YouTubeDataAPIService } from 'src/render/service/youtube/api';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { YouTubeSearchComponent } from './components/search/youtube/youtube-sear
   ],
   providers: [
     YouTubePlayerAPIService,
+    YouTubeDataAPIService,
   ],
   bootstrap: [AppComponent]
 })
