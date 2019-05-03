@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { YouTubeSearchItem } from 'src/models/youtube';
 import { YouTubeDataAPIService } from 'src/render/service/youtube/api';
 
@@ -10,12 +10,19 @@ declare var window: any;
   templateUrl: './youtube-search.component.html',
   styleUrls: ['./youtube-search.component.sass']
 })
-export class YouTubeSearchComponent {
+export class YouTubeSearchComponent implements OnInit {
 
   query = '';
   items: YouTubeSearchItem[] = [];
+  authenticated = false;
 
-  constructor(private youtube: YouTubeDataAPIService) { }
+  constructor(private zone: NgZone, private youtube: YouTubeDataAPIService) {}
+
+  ngOnInit() {
+    this.youtube.authenticated.subscribe(() => {
+      this.zone.run(() => this.authenticated = true);
+    });
+  }
 
   keyup(ev) {
     if (ev.key === 'Enter') {
@@ -35,8 +42,7 @@ export class YouTubeSearchComponent {
   }
 
   startAuthentication() {
-    const ipcRenderer = window.ipcRenderer;
-    ipcRenderer.send('auth', {});
+    this.youtube.authenticate();
   }
 
 }

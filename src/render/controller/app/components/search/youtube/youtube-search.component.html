@@ -1,20 +1,28 @@
-<div class="form-group">
-  <input
-    class="form-input"
-    type="text"
-    id="search-keyword"
-    placeholder="Search on YouTube"
-    [(ngModel)]="query"
-    (keyup)="keyup($event)"
-  />
+<div *ngIf="authenticated" class="youtube-search-main">
+  <div class="form-group">
+    <input
+      class="form-input"
+      type="text"
+      id="search-keyword"
+      placeholder="Search on YouTube"
+      [(ngModel)]="query"
+      (keyup)="keyup($event)"
+    />
+  </div>
+  <div class="search-result">
+    <div class="search-result-item"
+      *ngFor="let item of items"
+      draggable="true"
+      (dragstart)="drag($event, item)"
+    >
+      <div>{{item.snippet.title}}</div>
+      <img src="{{item.snippet.thumbnails.default.url}}" />
+    </div>
+  </div>
 </div>
-<div class="search-result">
-  <div class="search-result-item"
-    *ngFor="let item of items"
-    draggable="true"
-    (dragstart)="drag($event, item)"
-  >
-    <div>{{item.snippet.title}}</div>
-    <img src="{{item.snippet.thumbnails.default.url}}" />
+<div *ngIf="!authenticated" class="auth-first">
+  <div>
+    <button class="btn btn-primary" (click)="startAuthentication()">Google Login</button>
+    <p>to use YouTube search.</p>
   </div>
 </div>

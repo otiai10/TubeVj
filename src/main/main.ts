@@ -25,20 +25,16 @@ const createControllerViewWindow = () => {
 };
 
 const createMessagingProxy = (master, controller) => {
-  ipcMain.on('video', (ev, arg) => {
-    // console.log(arg);
-    master.webContents.send('video', arg);
-  });
-  ipcMain.on('auth', async (ev, arg) => {
+  ipcMain.on('video', (ev, arg) => master.webContents.send('video', arg));
+  ipcMain.on('auth-start', async () => {
     const client = new GoogleOAuthClient({
       clientId: env.OAUTH_CLIENT.client_id,
       clientSecret: env.OAUTH_CLIENT.client_secret,
       redirectUri: env.OAUTH_CLIENT.redirect_uris[0],
     });
-    const win = new BrowserWindow({useContentSize: true});
-    const code = await client.askCodeOn(win);
-    const token = await client.exchangeCodeForToken(code);
-    console.log('API Token', token);
+    const code = await client.getCode();
+    const {tokens, res} = await client.getTokens(code);
+    res.status === 200 ? controller.send('auth-success', tokens) : controller.send('auth-error', res);
   });
 };
 

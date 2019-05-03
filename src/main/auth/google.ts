@@ -1,12 +1,6 @@
+import { BrowserWindow } from 'electron';
+import { GetTokenResponse } from 'google-auth-library/build/src/auth/oauth2client';
 import { OAuth2Client, OAuth2ClientOptions } from 'google-auth-library';
-
-// declare interface OAuth2ClientOptions {
-//   clientId: string;
-//   clientSecret?: string;
-//   redirectUri: string;
-// }
-
-// declare var google: any;
 
 export const scopes = [
   'https://www.googleapis.com/auth/youtube.readonly',
@@ -20,34 +14,30 @@ export class GoogleOAuthClient {
     this.provider = new OAuth2Client(this.config);
   }
 
-  askCodeOn(win: Electron.BrowserWindow): Promise<string> {
-    return new Promise((resolve, reject) => {
-      const authURL = this.generateAuthUrl();
-      win.loadURL(authURL);
-      win.on('page-title-updated', (ev, title) => {
+  getCode(): Promise<string> {
+    const auth = new BrowserWindow({ x: 40, y: 40, useContentSize: true });
+    return new Promise<string>((resolve, reject) => {
+      auth.loadURL(this.provider.generateAuthUrl({ scope: scopes }));
+      const onclosed = () => reject('Interaction ended intentionally');
+      auth.on('close', onclosed);
+      auth.on('page-title-updated', ev => {
         const url = new URL(ev.sender.getURL());
         if (url.searchParams.get('approvalCode')) {
-          win.close();
+          auth.removeListener('close', onclosed);
+          auth.close();
           return resolve(url.searchParams.get('approvalCode'));
         }
         if ((url.searchParams.get('response') || '').startsWith('error=')) {
-          win.close();
+          auth.removeListener('close', onclosed);
+          auth.close();
           return reject(url.searchParams.get('response'));
         }
-        // else: do nothing, stay tuned...
       });
     });
   }
 
-  exchangeCodeForToken(code: string) {
+  getTokens(code: string): Promise<GetTokenResponse> {
     return this.provider.getToken(code);
-  }
-
-  private generateAuthUrl() {
-    return this.provider.generateAuthUrl({
-      access_type: 'offline',
-      scope: scopes,
-    });
   }
 
 }
