@@ -15,7 +15,7 @@ const createMasterViewWindow = () => {
 const createControllerViewWindow = () => {
   const project = 'controller-window';
   const win = new BrowserWindow({
-    width: 800,
+    width: 1200,
     height: 920,
     x: 0, y: 0,
     icon: `file://${__dirname}/${project}/assets/logo.png`,
