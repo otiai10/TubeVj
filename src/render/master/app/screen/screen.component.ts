@@ -1,6 +1,7 @@
 import { Component, Input, EventEmitter, OnInit } from '@angular/core';
 import { YouTubePlayerAPIService } from 'src/render/service/youtube/player';
 import { VideoOperation, VideoOperationType } from 'src/models/video';
+import { environment } from '../../../../environments/environment';
 
 declare var YT: any;
 
@@ -59,6 +60,12 @@ export class ScreenComponent implements OnInit {
     case YT.PlayerState.ENDED:
       return this.player.playVideo();
     }
+  }
+
+  private style() {
+    return {
+      zIndex: environment.screens - this.index,
+    };
   }
 
 }
