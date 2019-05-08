@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { YouTubePlayerAPIService } from '../../service/youtube/player';
 
 import { VideoOperation } from '../../../models/video';
 import { environment } from '../../../environments/environment';
+import { KeybindService } from 'src/render/service/keybind';
 
 // FIXME:
 //    - https://github.com/angular/angular-cli/issues/8272
@@ -21,7 +22,7 @@ export class AppComponent {
 
   tracks = Array(environment.screens).fill(0).map((_, i) => i);
 
-  constructor(private yt: YouTubePlayerAPIService) {
+  constructor(private yt: YouTubePlayerAPIService, private keybind: KeybindService) {
     yt.defer(window);
   }
 
@@ -30,4 +31,8 @@ export class AppComponent {
     ipcRenderer.send('video', op);
   }
 
+  @HostListener('document:keyup', ['$event'])
+  onKeyup(ev: KeyboardEvent) {
+    this.keybind.on(ev);
+  }
 }

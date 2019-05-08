@@ -8,7 +8,7 @@
       <div id="player-{{index}}"></div>
     </div>
     <div class="column col-8">
-      <app-fader [onSlide]="onFadeChange.bind(this)"></app-fader>
+      <app-fader [onSlide]="onFadeChange.bind(this)" [value]="opacity * 100"></app-fader>
     </div>
   </div>
 </div>

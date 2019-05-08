@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { YouTubePlayerAPIService } from 'src/render/service/youtube/player';
 import { VideoOperation, VideoOperationType } from 'src/models/video';
+import { KeybindService, KeybindPayload, KeybindEventType } from 'src/render/service/keybind';
 
 declare var YT: any;
 
@@ -16,9 +17,11 @@ export class PreviewTrackComponent {
 
   private isDragOver = false;
   private player: any; // TODO: Typings
+  private opacity = 0;
 
-  constructor(private yt: YouTubePlayerAPIService) {
+  constructor(private yt: YouTubePlayerAPIService, private keybind: KeybindService) {
     yt.ready.subscribe(() => this.initPlayer());
+    this.keybind.filtered.subscribe((payload: KeybindPayload) => this.onKeybindEvent(payload));
   }
 
   private initPlayer() {
@@ -81,7 +84,15 @@ export class PreviewTrackComponent {
   }
 
   onFadeChange(ev) {
-    const opacity = parseInt(ev.target.value, 10) / 100;
-    this.push({type: VideoOperationType.FADE, video: {opacity}, target: this.index});
+    this.opacity = parseInt(ev.target.value, 10) / 100;
+    this.push({type: VideoOperationType.FADE, video: {opacity: this.opacity}, target: this.index});
+  }
+
+  private onKeybindEvent(payload: KeybindPayload) {
+    if (payload.target !== this.index) { return; }
+    if (payload.type === KeybindEventType.Toggle) {
+      this.opacity = this.opacity < 0.7 ? 1 : 0;
+      this.push({ type: VideoOperationType.FADE, video: { opacity: this.opacity }, target: this.index });
+    }
   }
 }

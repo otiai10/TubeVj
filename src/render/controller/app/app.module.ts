@@ -10,6 +10,7 @@ import { YouTubePlayerAPIService } from 'src/render/service/youtube/player';
 import { FaderComponent } from './components/parts/fader/fader.component';
 import { YouTubeSearchComponent } from './components/search/youtube/youtube-search.component';
 import { YouTubeDataAPIService } from 'src/render/service/youtube/api';
+import { KeybindService } from 'src/render/service/keybind';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { YouTubeDataAPIService } from 'src/render/service/youtube/api';
   providers: [
     YouTubePlayerAPIService,
     YouTubeDataAPIService,
+    KeybindService,
   ],
   bootstrap: [AppComponent]
 })

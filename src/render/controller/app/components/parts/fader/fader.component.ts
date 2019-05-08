@@ -7,7 +7,7 @@ import { Component, Input } from '@angular/core';
 })
 export class FaderComponent {
 
-  value = 40;
+  @Input() value = 0;
 
   @Input() min =   0;
   @Input() max = 100;
