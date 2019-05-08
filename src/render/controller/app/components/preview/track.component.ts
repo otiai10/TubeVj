@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ElementRef } from '@angular/core';
 import { YouTubePlayerAPIService } from 'src/render/service/youtube/player';
 import { VideoOperation, VideoOperationType } from 'src/models/video';
 import { KeybindService, KeybindPayload, KeybindEventType } from 'src/render/service/keybind';
@@ -19,7 +19,7 @@ export class PreviewTrackComponent {
   private player: any; // TODO: Typings
   private opacity = 0;
 
-  constructor(private yt: YouTubePlayerAPIService, private keybind: KeybindService) {
+  constructor(private yt: YouTubePlayerAPIService, private keybind: KeybindService, private ref: ElementRef) {
     yt.ready.subscribe(() => this.initPlayer());
     this.keybind.filtered.subscribe((payload: KeybindPayload) => this.onKeybindEvent(payload));
   }
@@ -93,6 +93,8 @@ export class PreviewTrackComponent {
     if (payload.type === KeybindEventType.Toggle) {
       this.opacity = this.opacity < 0.7 ? 1 : 0;
       this.push({ type: VideoOperationType.FADE, video: { opacity: this.opacity }, target: this.index });
+      // FIXME: This implementation is not recommended...
+      this.ref.nativeElement.querySelector('input[type=range]').focus();
     }
   }
 }
